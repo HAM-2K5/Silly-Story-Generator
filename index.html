@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Silly Story Generator 😂</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f9f7f7;
+        text-align: center;
+        padding: 40px;
+    }
+    h1 {
+        color: #ff5c8a;
+        font-size: 2.2em;
+    }
+    #story {
+        margin: 20px auto;
+        padding: 20px;
+        max-width: 500px;
+        background: #fff3f3;
+        border-radius: 12px;
+        font-size: 1.2em;
+        box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+    button {
+        background: #ff5c8a;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-size: 1em;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    button:hover {
+        background: #e14d79;
+    }
+</style>
+</head>
+<body>
+
+<h1>😂 Silly Story Generator</h1>
+<div id="story">Click the button to get a silly story!</div>
+<button onclick="generateStory()">New Story</button>
+
+<script>
+    const stories = [
+        "Once upon a time, a 🐔 wore sunglasses and danced the moonwalk in Times Square.",
+        "A 🐿️ became president and banned all Mondays from the calendar.",
+        "A 🐱 learned coding and built a website selling invisible cheese.",
+        "A 🐟 decided to fly by strapping itself to a bunch of 🎈 balloons.",
+        "A 🐧 opened a coffee shop and served only iced drinks in Antarctica.",
+        "A 🥔 started a rock band and became more famous than The Beatles."
+    ];
+
+    const emojis = ["😂","🤣","🤪","🙃","😹","🐒","🦄","🍕","🥳","🎉"];
+
+    function generateStory() {
+        const storyBox = document.getElementById("story");
+        
+        // Fade out
+        storyBox.style.opacity = 0;
+
+        setTimeout(() => {
+            // Pick random story
+            const randomIndex = Math.floor(Math.random() * stories.length);
+            let story = stories[randomIndex];
+
+            // Add a random emoji at the end
+            const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+            story += " " + randomEmoji;
+
+            // Update text
+            storyBox.textContent = story;
+
+            // Fade in
+            storyBox.style.opacity = 1;
+        }, 300); // matches half the transition time for smoothness
+    }
+</script>
+
+</body>
+</html>
